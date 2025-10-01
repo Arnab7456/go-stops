@@ -1,4 +1,5 @@
 "use client"
+import Header from "@/components/Header";
 import HeroGallery from "@/components/Hero";
 import RoomCard from "@/components/RoomCard";
 import BookingSummary from "@/components/Booking";
@@ -83,7 +84,7 @@ export default function Home() {
     setActive(tab)
     const target = document.getElementById(sectionIds[tab])
     if (target) {
-      const offset = 100; // Account for navigation bar height
+      const offset = 160; // Account for fixed header + navigation bar height
       const elementPosition = target.offsetTop - offset;
       window.scrollTo({
         top: elementPosition,
@@ -93,18 +94,19 @@ export default function Home() {
   }
 
   return (
-    <div className="overflow-x-hidden max-w-7xl mx-auto">
-     
-      <HeroGallery
-        images={[
-          "assets/hero1.webp",
-          "assets/hero2.webp",
-          "assets/hero3.webp",
-          "assets/hero4.webp",
-          "assets/hero5.webp",
-        ]}
-      />
-      <div className="grid lg:grid-cols-[1fr_400px] gap-8 max-w-[1400px] mx-auto">
+    <div className="overflow-x-hidden">
+      <Header />
+      <div className="pt-16 max-w-7xl mx-auto">
+        <HeroGallery
+          images={[
+            "assets/hero1.webp",
+            "assets/hero2.webp",
+            "assets/hero3.webp",
+            "assets/hero4.webp",
+            "assets/hero5.webp",
+          ]}
+        />
+      <div className="grid lg:grid-cols-[1fr_400px] gap-8 max-w-7xl mx-auto">
         <div ref={leftRef}>
         <StickyNavigation activeTab={activeTab} onTabClick={handleTabClick} />
           <section id="section-rooms" className="container mx-auto px-4 py-12">
@@ -129,6 +131,7 @@ export default function Home() {
         <div className="hidden lg:block px-4 py-6">
           <BookingSummary />
         </div>
+      </div>
       </div>
     </div>
   );
