@@ -33,7 +33,6 @@ const rooms = [
 
 export default function Home() {
   const [activeTab, setActive] = useState<TabKey>("Rooms");
-  const [selectedBed, setSelectedBed] = useState<string | null>(null)
   const leftRef = useRef<HTMLDivElement>(null)
   const sectionIds = useMemo(
     () => ({
